@@ -35,5 +35,14 @@
   { "date": "2026-10-30", "category": "rate", "label": "미국 PCE 발표",    "detail": "9월 개인소비지출(PCE) 물가지수 발표 (현지 29일, KST 30일)", "confirmed": "예상" },
   { "date": "2026-10-30", "category": "big",  "label": "Apple 실적 발표",   "detail": "Apple FY4Q26 실적 (현지 29일 AMC, KST 30일)", "confirmed": "예상" },
   { "date": "2026-10-30", "category": "big",  "label": "Amazon 실적 발표",  "detail": "Amazon 3분기 실적 (현지 29일 AMC, KST 30일)", "confirmed": "예상" },
-  { "date": "2026-12-01", "category": "ipo",  "label": "MSCI 지수 리밸런싱", "detail": "11월 MSCI 분기 리뷰 결과에 따른 지수 조정 발효일 (발표일 11/11)", "confirmed": "Y" }
+  { "date": "2026-11-04", "category": "rate", "label": "미국 중간선거",     "detail": "미국 하원·상원 일부 중간선거 — 의회 구성 변화에 따른 재정·무역 정책 변수", "confirmed": "Y" },
+  { "date": "2026-11-05", "category": "chip", "label": "AMD 실적 발표",    "detail": "AMD 3분기 실적 발표 (현지 4일 AMC, KST 5일) — MI325·MI350 출하 현황 주목", "confirmed": "예상" },
+  { "date": "2026-11-13", "category": "rate", "label": "미국 CPI 발표",    "detail": "10월 소비자물가지수 발표 (현지 12일, KST 13일)", "confirmed": "예상" },
+  { "date": "2026-11-20", "category": "chip", "label": "NVIDIA 실적 발표", "detail": "NVIDIA FY2027 3분기 실적 발표 (현지 19일 AMC, KST 20일) — Blackwell 풀가동 여부·데이터센터 수요 주목", "confirmed": "예상" },
+  { "date": "2026-11-26", "category": "rate", "label": "미국 PCE 발표",    "detail": "10월 개인소비지출(PCE) 물가지수 발표 (현지 25일, KST 26일)", "confirmed": "예상" },
+  { "date": "2026-12-01", "category": "ipo",  "label": "MSCI 지수 리밸런싱", "detail": "11월 MSCI 분기 리뷰 결과에 따른 지수 조정 발효일 (발표일 11/11)", "confirmed": "Y" },
+  { "date": "2026-12-11", "category": "rate", "label": "미국 CPI 발표",    "detail": "11월 소비자물가지수 발표 (현지 10일, KST 11일)", "confirmed": "예상" },
+  { "date": "2026-12-16", "category": "rate", "label": "FOMC 금리 결정",   "detail": "미국 FOMC 금리 결정 및 경제전망·점도표 발표 (현지 15일, KST 16일)", "confirmed": "Y" },
+  { "date": "2026-12-19", "category": "rate", "label": "미국 트리플위칭",  "detail": "분기 트리플위칭데이 — 주가지수 선물/옵션·개별주식 옵션 동시 만기 (현지 18일, KST 19일)", "confirmed": "Y" },
+  { "date": "2026-12-24", "category": "rate", "label": "미국 PCE 발표",    "detail": "11월 개인소비지출(PCE) 물가지수 발표 (현지 23일, KST 24일)", "confirmed": "예상" }
 ]
