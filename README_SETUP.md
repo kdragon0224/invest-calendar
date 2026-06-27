@@ -16,10 +16,10 @@ Drive·Apps Script 없이 Claude가 직접 DB를 업데이트합니다.
 2. 이 폴더의 파일들을 모두 push:
 
 ```bash
-cd "투자 검토"   # 이 폴더
-git init
-git add .
-git commit -m "init"
+cd "투자 검토"            # 이 폴더
+git init                # git 초기화
+git add -A               # 전체 파일 추가(숨기 파일 포함)
+git commit -m "init"    # 커밋
 git remote add origin https://github.com/YOUR_ID/invest-calendar.git
 git push -u origin main
 ```

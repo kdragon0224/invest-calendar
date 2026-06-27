@@ -37,38 +37,46 @@ export default function CalendarPage() {
   const [events, setEvents]     = useState<EventsMap>({});
   const [activeKey, setActive]  = useState<string | null>(null);
   const [loading, setLoading]   = useState(true);
-  const [refreshing, setRefresh]= useState(false);
+  const [aiLoading, setAiLoad]  = useState(false);
   const [toast, setToast]       = useState<{ msg: string; show: boolean }>({ msg: '', show: false });
-  const [lastUpdated, setLastUpdated] = useState('');
 
-  // 이벤트 데이터 로드
-  const loadEvents = useCallback(async (showToast = false) => {
-    try {
-      const res = await fetch('/api/events', { cache: 'no-store' });
-      if (!res.ok) throw new Error('서버 오류');
-      const data: EventsMap = await res.json();
-      setEvents(data);
-      const now = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false }).replace(/\./g, '.').slice(0, 16);
-      setLastUpdated(now);
-      if (showToast) showToastMsg(`✅ 최신 데이터로 갱신되었습니다`);
-    } catch {
-      if (showToast) showToastMsg('❌ 갱신 실패');
-    }
+  const loadEvents = useCallback(() => {
+    return fetch('/api/events', { cache: 'no-store' })
+      .then(r => r.json())
+      .then((data: EventsMap) => setEvents(data));
   }, []);
 
   useEffect(() => {
     loadEvents().finally(() => setLoading(false));
   }, [loadEvents]);
 
-  function showToastMsg(msg: string) {
+  function showToast(msg: string) {
     setToast({ msg, show: true });
-    setTimeout(() => setToast(t => ({ ...t, show: false })), 3000);
+    setTimeout(() => setToast(t => ({ ...t, show: false })), 4000);
   }
 
-  async function handleRefresh() {
-    setRefresh(true);
-    await loadEvents(true);
-    setRefresh(false);
+  async function handleAiUpdate() {
+    setAiLoad(true);
+    showToast('🤖 Gemini가 최신 일정을 검색 중입니다…');
+    try {
+      const res = await fetch('/api/ai-update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        await loadEvents();
+        setActive(null);
+        showToast(`✅ ${data.count}건 갱신 완료 (${data.updatedAt})`);
+      } else {
+        showToast(`❌ ${data.error}`);
+      }
+    } catch {
+      showToast('❌ 갱신 실패. 다시 시도해주세요.');
+    } finally {
+      setAiLoad(false);
+    }
   }
 
   function prevMonth() {
@@ -125,23 +133,19 @@ export default function CalendarPage() {
         <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--text)', textAlign: 'center' }}>
           📈 투자 일정 캘린더
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8, marginTop: 4 }}>
-          <span style={{ fontSize: 11, color: 'var(--text3)' }}>
-            {loading ? '로딩 중…' : `업데이트: ${lastUpdated}`}
-          </span>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
           <button
-            onClick={handleRefresh}
-            disabled={refreshing}
+            onClick={handleAiUpdate}
+            disabled={aiLoading}
             style={{
               fontSize: 11, padding: '2px 8px',
               border: '0.5px solid var(--border2)',
               borderRadius: 5, background: 'var(--bg2)',
-              color: 'var(--text3)', cursor: 'pointer',
-              opacity: refreshing ? 0.45 : 1,
-              lineHeight: 1.6,
+              color: 'var(--text3)', cursor: aiLoading ? 'default' : 'pointer',
+              opacity: aiLoading ? 0.45 : 1, lineHeight: 1.6,
             }}
           >
-            {refreshing ? '⏳ 갱신 중…' : '🔄 새로고침'}
+            {aiLoading ? '⏳ AI 갱신 중…' : '🤖 AI 갱신'}
           </button>
         </div>
       </div>
