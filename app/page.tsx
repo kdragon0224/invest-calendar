@@ -37,8 +37,6 @@ export default function CalendarPage() {
   const [events, setEvents]     = useState<EventsMap>({});
   const [activeKey, setActive]  = useState<string | null>(null);
   const [loading, setLoading]   = useState(true);
-  const [aiLoading, setAiLoad]  = useState(false);
-  const [toast, setToast]       = useState<{ msg: string; show: boolean }>({ msg: '', show: false });
 
   const loadEvents = useCallback(() => {
     return fetch('/api/events', { cache: 'no-store' })
@@ -49,35 +47,6 @@ export default function CalendarPage() {
   useEffect(() => {
     loadEvents().finally(() => setLoading(false));
   }, [loadEvents]);
-
-  function showToast(msg: string) {
-    setToast({ msg, show: true });
-    setTimeout(() => setToast(t => ({ ...t, show: false })), 4000);
-  }
-
-  async function handleAiUpdate() {
-    setAiLoad(true);
-    showToast('🤖 Gemini가 최신 일정을 검색 중입니다…');
-    try {
-      const res = await fetch('/api/ai-update', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
-      });
-      const data = await res.json();
-      if (data.ok) {
-        await loadEvents();
-        setActive(null);
-        showToast(`✅ ${data.count}건 갱신 완료 (${data.updatedAt})`);
-      } else {
-        showToast(`❌ ${data.error}`);
-      }
-    } catch {
-      showToast('❌ 갱신 실패. 다시 시도해주세요.');
-    } finally {
-      setAiLoad(false);
-    }
-  }
 
   function prevMonth() {
     setCur(c => c.m === 0 ? { y: c.y - 1, m: 11 } : { y: c.y, m: c.m - 1 });
@@ -117,36 +86,10 @@ export default function CalendarPage() {
   return (
     <div style={{ maxWidth: 480, margin: '0 auto', padding: '16px 12px 32px' }}>
 
-      {/* Toast */}
-      <div style={{
-        position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-        background: '#1d1d1f', color: '#fff',
-        fontSize: 13, padding: '10px 18px', borderRadius: 20,
-        opacity: toast.show ? 1 : 0, transition: 'opacity 0.3s',
-        pointerEvents: 'none', zIndex: 999, whiteSpace: 'nowrap',
-      }}>
-        {toast.msg}
-      </div>
-
       {/* 헤더 */}
       <div style={{ marginBottom: 16, padding: '0 2px' }}>
         <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--text)', textAlign: 'center' }}>
           📈 투자 일정 캘린더
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
-          <button
-            onClick={handleAiUpdate}
-            disabled={aiLoading}
-            style={{
-              fontSize: 11, padding: '2px 8px',
-              border: '0.5px solid var(--border2)',
-              borderRadius: 5, background: 'var(--bg2)',
-              color: 'var(--text3)', cursor: aiLoading ? 'default' : 'pointer',
-              opacity: aiLoading ? 0.45 : 1, lineHeight: 1.6,
-            }}
-          >
-            {aiLoading ? '⏳ AI 갱신 중…' : '🤖 AI 갱신'}
-          </button>
         </div>
       </div>
 
