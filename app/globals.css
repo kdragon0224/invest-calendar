@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:      #ffffff;
+  --bg2:     #f5f5f7;
+  --bg3:     #ebebed;
+  --text:    #1d1d1f;
+  --text2:   #6e6e73;
+  --text3:   #aeaeb2;
+  --border:  rgba(0,0,0,0.12);
+  --border2: rgba(0,0,0,0.22);
+  --blue:    #378ADD;
+  --radius:  10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #1c1c1e;
+    --bg2:     #2c2c2e;
+    --bg3:     #3a3a3c;
+    --text:    #f5f5f7;
+    --text2:   #aeaeb2;
+    --text3:   #6e6e73;
+    --border:  rgba(255,255,255,0.12);
+    --border2: rgba(255,255,255,0.22);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── 이벤트 뱃지 ── */
+.ev-rate { background: #FCEBEB; color: #A32D2D; }
+.ev-chip { background: #E6F1FB; color: #185FA5; }
+.ev-big  { background: #EEEDFE; color: #534AB7; }
+.ev-ipo  { background: #FAEEDA; color: #854F0B; }
+
+@media (prefers-color-scheme: dark) {
+  .ev-rate { background: #3d1a1a; color: #f09595; }
+  .ev-chip { background: #0d2a45; color: #85b7eb; }
+  .ev-big  { background: #1e1b40; color: #afa9ec; }
+  .ev-ipo  { background: #3d2a05; color: #fac775; }
+}
+
+/* ── 슬라이드다운 애니메이션 ── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slidedown { animation: slideDown 0.18s ease; }
