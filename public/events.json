@@ -42,7 +42,7 @@
   { "date": "2026-11-26", "category": "rate", "label": "미국 PCE 발표",    "detail": "10월 개인소비지출(PCE) 물가지수 발표 (현지 25일, KST 26일)", "confirmed": "예상" },
   { "date": "2026-12-01", "category": "ipo",  "label": "MSCI 지수 리밸런싱", "detail": "11월 MSCI 분기 리뷰 결과에 따른 지수 조정 발효일 (발표일 11/11)", "confirmed": "Y" },
   { "date": "2026-12-11", "category": "rate", "label": "미국 CPI 발표",    "detail": "11월 소비자물가지수 발표 (현지 10일, KST 11일)", "confirmed": "예상" },
-  { "date": "2026-12-16", "category": "rate", "label": "FOMC 금리 결정",   "detail": "미국 FOMC 금리 결정 및 경제전망·점도표 발표 (현지 15일, KST 16일)", "confirmed": "Y" },
+  { "date": "2026-12-10", "category": "rate", "label": "FOMC 금리 결정",   "detail": "미국 FOMC 금리 결정 및 경제전망·점도표 발표 (현지 9일, KST 10일)", "confirmed": "Y" },
   { "date": "2026-12-19", "category": "rate", "label": "미국 트리플위칭",  "detail": "분기 트리플위칭데이 — 주가지수 선물/옵션·개별주식 옵션 동시 만기 (현지 18일, KST 19일)", "confirmed": "Y" },
   { "date": "2026-12-24", "category": "rate", "label": "미국 PCE 발표",    "detail": "11월 개인소비지출(PCE) 물가지수 발표 (현지 23일, KST 24일)", "confirmed": "예상" }
 ]
