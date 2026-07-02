@@ -6,7 +6,7 @@
   { "date": "2026-07-23", "category": "chip", "label": "삼성전자 확정실적", "detail": "삼성전자 2분기 확정실적 — HBM·파운드리 실적 포함", "confirmed": "Y" },
   { "date": "2026-07-24", "category": "chip", "label": "인텔 실적 발표",   "detail": "인텔 2분기 실적 발표 (현지 23일 AMC, KST 24일)", "confirmed": "예상" },
   { "date": "2026-07-29", "category": "chip", "label": "SK하이닉스 실적",  "detail": "SK하이닉스 2분기 실적 — HBM3E 출하량·마진 주목", "confirmed": "Y" },
-  { "date": "2026-07-29", "category": "big",  "label": "Alphabet 실적 발표", "detail": "Alphabet(구글) 2분기 실적 (현지 28일 AMC, KST 29일) — AI 검색·클라우드 매출 주목", "confirmed": "예상" },
+  { "date": "2026-07-29", "category": "big",  "label": "Alphabet 실적 발표", "detail": "Alphabet(구글) 2분기 실적 (현지 28일 AMC, KST 29일) — AI 검색·클라우드 매출 주목", "confirmed": "Y" },
   { "date": "2026-07-30", "category": "rate", "label": "FOMC 금리 결정",   "detail": "미국 FOMC 금리 결정 및 기자회견 (현지 29일, KST 30일)", "confirmed": "Y" },
   { "date": "2026-07-30", "category": "big",  "label": "Meta 실적 발표",    "detail": "Meta 2분기 실적 (현지 29일 AMC, KST 30일) — AI 광고·라마 모델 주목", "confirmed": "예상" },
   { "date": "2026-07-30", "category": "big",  "label": "Microsoft 실적 발표", "detail": "Microsoft FY4Q 실적 (현지 29일 AMC, KST 30일) — Azure AI·Copilot 수익화 주목", "confirmed": "예상" },
